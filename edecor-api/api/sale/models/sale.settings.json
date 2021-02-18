@@ -1,0 +1,38 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sales",
+  "info": {
+    "name": " sale",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "price": {
+      "type": "decimal",
+      "required": true,
+      "default": 0,
+      "min": 0
+    },
+    "date": {
+      "type": "date",
+      "required": true
+    },
+    "client": {
+      "type": "string",
+      "required": true
+    },
+    "products": {
+      "collection": "product",
+      "via": "sales",
+      "dominant": true
+    },
+    "payment": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

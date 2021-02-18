@@ -1,0 +1,49 @@
+{
+  "kind": "collectionType",
+  "collectionName": "promotions",
+  "info": {
+    "name": " Promotion",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "required": true,
+      "targetField": "name"
+    },
+    "price": {
+      "required": true,
+      "default": 0,
+      "min": 0,
+      "type": "decimal"
+    },
+    "image": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": true
+    },
+    "products": {
+      "collection": "product",
+      "via": "promotions",
+      "dominant": true
+    },
+    "categories": {
+      "collection": "category",
+      "via": "promotions",
+      "dominant": true
+    }
+  }
+}
